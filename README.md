@@ -2,6 +2,7 @@
 
 > A free, open-source coaching toolkit for roller derby teams — built to streamline drill planning,
 > roster management, rules reference, and performance analytics from the track to the whiteboard.
+> Supports WFTDA, USARS, and JRDA leagues at all levels of play.
 
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 [![Repo: StarPassForge](https://img.shields.io/badge/org-StarPassForge-blueviolet)](https://github.com/StarPassForge)
@@ -11,9 +12,10 @@
 ## 📖 Overview
 
 The **Roller Derby Coach App** is a modular coaching assistant designed for head coaches, assistant
-coaches, and team managers at all levels of roller derby competition. It centralizes the tools a
-coaching staff actually uses — drill libraries, live roster tracking, rules quick-reference, and
-post-bout analytics — into a single, open platform that any league can self-host, fork, and adapt.
+coaches, and team managers at all levels of roller derby competition — from junior leagues to elite
+bout teams. It centralizes the tools a coaching staff actually uses — drill libraries, live roster
+tracking, rules quick-reference, and post-bout analytics — into a single, open platform that any
+WFTDA, USARS, or JRDA league can self-host, fork, and adapt.
 
 The project is maintained under the **StarPassForge** organization and is proudly licensed under the
 [GNU General Public License v3.0](LICENSE), meaning every improvement stays open for the community.
@@ -25,7 +27,7 @@ The project is maintained under the **StarPassForge** organization and is proudl
 ```
 roller-derby-coach-app/
 ├── drills/          # Drill library and practice plan builder
-├── rules/           # WFTDA/USARS rules reference and quick-lookup tools
+├── rules/           # WFTDA/USARS/JRDA rules reference and quick-lookup tools
 ├── roster/          # Skater profiles, eligibility tracking, and lineup management
 ├── analytics/       # Bout statistics, performance metrics, and reporting
 ├── ui/              # Front-end components, layouts, and theming
@@ -36,10 +38,10 @@ roller-derby-coach-app/
 
 | Folder | Purpose |
 |---|---|
-| `drills/` | A searchable library of roller derby drills tagged by skill level, focus area (blocking, jamming, footwork, etc.), and session duration. Includes a practice plan builder that lets coaches sequence drills into full session templates. |
-| `rules/` | A structured, searchable digest of current WFTDA and USARS rulebooks. Designed for quick on-bench lookups — covers penalties, gameplay definitions, officiating signals, and rules-change changelogs. |
-| `roster/` | Skater profile management including insurance status, minimum skills certification, dues standing, and game-day eligibility flags. Supports multi-team leagues and travel squad exports. |
-| `analytics/` | Bout-level and season-level statistics for skaters and units. Tracks jam points, lead jammer %, blocker efficiency, penalty heat maps, and trend lines across a season. |
+| `drills/` | A searchable library of roller derby drills tagged by skill level, focus area (blocking, jamming, footwork, etc.), and session duration. Supports filtering by ruleset (WFTDA, USARS, JRDA) so coaches can surface age- and rules-appropriate content. Includes a practice plan builder to sequence drills into full session templates. |
+| `rules/` | A structured, searchable digest of current WFTDA, USARS, and JRDA rulebooks. Designed for quick on-bench lookups — covers penalties, gameplay definitions, officiating signals, and rules-change changelogs across all three governing bodies. |
+| `roster/` | Skater profile management including insurance status, minimum skills certification, dues standing, and game-day eligibility flags. Supports multi-team leagues, travel squad exports, and JRDA age-eligibility tracking. |
+| `analytics/` | Bout-level and season-level statistics for skaters and units. Tracks jam points, lead jammer %, blocker efficiency, penalty heat maps, and trend lines across a season. Compatible with WFTDA, USARS, and JRDA scoring formats. |
 | `ui/` | Shared front-end components (navigation, cards, modals, data tables) and global theming. Built to be responsive for both desktop coaching boards and mobile sideline use. |
 | `docs/` | Setup and installation guides, architecture decisions, API reference, and contributor documentation. Start here if you're deploying or contributing. |
 
@@ -47,10 +49,10 @@ roller-derby-coach-app/
 
 ## ✨ Features
 
-- **Drill Library** — Browse, filter, and build practice sessions from a growing community drill bank
-- **Rules Quick-Reference** — Search penalties and definitions without leaving the bench
-- **Roster Management** — Track skater eligibility, certifications, and game-day availability
-- **Performance Analytics** — Visualize individual and unit stats across bouts and seasons
+- **Drill Library** — Browse, filter, and build practice sessions from a growing community drill bank; filter by WFTDA, USARS, or JRDA ruleset
+- **Rules Quick-Reference** — Search penalties and definitions across WFTDA, USARS, and JRDA rulebooks without leaving the bench
+- **Roster Management** — Track skater eligibility, certifications, and game-day availability; includes JRDA age-eligibility flags
+- **Performance Analytics** — Visualize individual and unit stats across bouts and seasons for all rulesets
 - **Session Planning** — Assemble full practice plans with time estimates and skill focus tags
 - **Responsive UI** — Works on coaching laptops, tablets, and phones at the track
 
@@ -61,7 +63,7 @@ roller-derby-coach-app/
 ### Near-Term (v0.x)
 - [ ] Drill submission flow for community contributions with coach review queue
 - [ ] CSV import/export for roster data (league management system compatibility)
-- [ ] Penalty tracker for live bout use
+- [ ] Penalty tracker for live bout use (WFTDA, USARS, and JRDA penalty sets)
 - [ ] Dark mode and high-contrast theming for low-light venues
 
 ### Mid-Term (v1.x)
@@ -69,12 +71,13 @@ roller-derby-coach-app/
 - [ ] Practice attendance and participation logging
 - [ ] Drill video embed support (self-hosted or linked)
 - [ ] Multi-language support (rulebook localization)
+- [ ] JRDA-specific age division management and guardian consent tracking
 - [ ] Mobile app wrapper (PWA or React Native)
 
 ### Long-Term (v2.x+)
 - [ ] AI-assisted practice plan suggestions based on team weaknesses
 - [ ] Season scheduling and opponent scouting notes
-- [ ] Integration with league management platforms
+- [ ] Integration with league management platforms (WFTDA, USARS, and JRDA member portals)
 - [ ] Live game dashboard with real-time stat entry
 - [ ] **JamStats integration** *(see below)*
 
@@ -94,6 +97,8 @@ after games.
   skater number
 - **Historical trend analysis** — Aggregate multiple JamStats imports into season-long performance
   curves and comparative reports
+- **Ruleset tagging** — Tag imported bouts by governing body (WFTDA, USARS, JRDA) for
+  accurate cross-ruleset analytics
 - **Export compatibility** — Produce JamStats-compatible output from manually entered bout data
   for leagues that track both systems
 
@@ -123,12 +128,14 @@ npm run dev
 
 ## 🤝 Contributing
 
-Contributions are welcome from coaches, developers, officials, and skaters alike. Please read
-[`docs/CONTRIBUTING.md`](docs/) before opening a pull request.
+Contributions are welcome from coaches, developers, officials, and skaters alike — across WFTDA,
+USARS, and JRDA communities. Please read [`docs/CONTRIBUTING.md`](docs/) before opening a pull
+request.
 
 - **Bug reports & feature requests:** Open a GitHub Issue
 - **Drill submissions:** Use the drill submission form in the app (or PR directly to `drills/`)
-- **Rules corrections:** Open a PR with a link to the applicable WFTDA/USARS rules citation
+- **Rules corrections:** Open a PR with a link to the applicable WFTDA, USARS, or JRDA rules citation
+- **JRDA-specific feedback:** Junior league coaches and officials are especially encouraged to weigh in on age-division features
 
 ---
 
@@ -147,5 +154,5 @@ See the [`LICENSE`](LICENSE) file for the full license text, or visit
 
 ## 🏁 Acknowledgments
 
-Built with love for the roller derby community by the **StarPassForge** collective.
+Built with love for the roller derby community — WFTDA, USARS, and JRDA — by the **StarPassForge** collective.
 *Hit hard. Coach smart. Share freely.*
